@@ -6,8 +6,6 @@ import './App.css'
 
 import PokemonCard from './components/PokemonCard'
 
-let i =0
-
 function App() {
 
   const pokemonList = [
@@ -37,22 +35,15 @@ function App() {
     ];
 
     
-    const [pokemonIndex, setPokemonIndex] = useState (pokemonList[i]);
+  const [pokemonIndex, setPokemonIndex] = useState (0);
 
-    const handleClickNext = () => {
-      i++
-      setPokemonIndex (pokemonList[i])
-    }
+  const handleClickPrevious = () => {(pokemonIndex > 0? setPokemonIndex(pokemonIndex - 1) : "" )}
 
-    const handleClickPrevious = () => {
-      i--
-      setPokemonIndex (pokemonList[i])
-    }
+  const handleClickNext = () => {(pokemonIndex < pokemonList.length - 1 ? setPokemonIndex(pokemonIndex + 1) : "")}
   
-
   return (
     <div>
-      <PokemonCard pokemon = {pokemonIndex}/>
+      <PokemonCard pokemon = {pokemonList[pokemonIndex]}/>
       <button onClick={handleClickPrevious}>Previous</button>
       <button onClick={handleClickNext}>Next</button>
     </div>
