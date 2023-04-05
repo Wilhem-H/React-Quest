@@ -5,6 +5,7 @@ import './App.css'
 
 
 import PokemonCard from './components/PokemonCard'
+import NavBar from './components/NavBar'
 
 function App() {
 
@@ -44,8 +45,7 @@ function App() {
   return (
     <div>
       <PokemonCard pokemon = {pokemonList[pokemonIndex]}/>
-      <button onClick={handleClickPrevious}>Previous</button>
-      <button onClick={handleClickNext}>Next</button>
+      <NavBar next={handleClickNext} previous={handleClickPrevious}/>
     </div>
   )
 }
