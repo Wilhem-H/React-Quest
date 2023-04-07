@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect } from 'react'
+import PropTypes  from "prop-types"
 import './App.css'
 
 
@@ -8,6 +8,20 @@ import PokemonCard from './components/PokemonCard'
 import NavBar from './components/NavBar'
 
 function App() {
+
+  useEffect(
+    () =>  {
+      window.alert("Hello pokemon trainer :)")
+      console.log (pokemonIndex)
+    }, 
+    []
+ );
+
+ function pikachu(){
+  if (pokemonIndex === 3) {
+    window.alert('pika pikachu !!!');
+  }
+ } 
 
   const pokemonList = [
     {
@@ -35,6 +49,12 @@ function App() {
       },
     ];
 
+    PokemonCard.propTypes = {
+      pokemon : PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        imgSrc: PropTypes.string
+      }).isRequired,
+    } 
     
   const [pokemonIndex, setPokemonIndex] = useState (0);
 
@@ -44,7 +64,8 @@ function App() {
   
   return (
     <div>
-      <PokemonCard pokemon = {pokemonList[pokemonIndex]}/>
+      <h1>Pokedex</h1>
+      <PokemonCard pokemon = {pokemonList[pokemonIndex]} pikachu = {pikachu} />
       <NavBar next={handleClickNext} previous={handleClickPrevious}/>
     </div>
   )
@@ -52,4 +73,3 @@ function App() {
 
 
 export default App
-

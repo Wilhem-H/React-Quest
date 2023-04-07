@@ -1,9 +1,3 @@
-import PropTypes  from "prop-types"
-
-// NavBar.propTypes = {
-//  next : PropTypes.function.isRequired,
-//  previous: PropTypes.function.isRequired,
-// }.isRequired
 
 
   function NavBar({next, previous}) {
