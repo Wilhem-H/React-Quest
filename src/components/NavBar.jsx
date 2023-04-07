@@ -1,10 +1,10 @@
 
 
-  function NavBar({next, previous}) {
+  function NavBar({name, index, setPokemonIndex}) {
     
+    const changePokemon = (index1) => { setPokemonIndex(index1)}
         return <>
-        <button onClick={previous}>Previous</button>
-        <button onClick={next}>Next</button>
+        <button onClick={changePokemon(index)}>{name}</button>
         </>
     
 }

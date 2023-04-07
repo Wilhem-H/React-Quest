@@ -17,9 +17,9 @@ function App() {
     []
  );
 
- function pikachu(){
-  if (pokemonIndex === 3) {
-    window.alert('pika pikachu !!!');
+  function pikachu(){
+    if (pokemonIndex === 3) {
+      window.alert('pika pikachu !!!');
   }
  } 
 
@@ -57,16 +57,19 @@ function App() {
     } 
     
   const [pokemonIndex, setPokemonIndex] = useState (0);
-
-  const handleClickPrevious = () => {(pokemonIndex > 0? setPokemonIndex(pokemonIndex - 1) : "" )}
-
-  const handleClickNext = () => {(pokemonIndex < pokemonList.length - 1 ? setPokemonIndex(pokemonIndex + 1) : "")}
   
   return (
     <div>
       <h1>Pokedex</h1>
       <PokemonCard pokemon = {pokemonList[pokemonIndex]} pikachu = {pikachu} />
-      <NavBar next={handleClickNext} previous={handleClickPrevious}/>
+      {pokemonList.map((poke, index) => (
+            <NavBar
+              index = {index}
+              key={poke.name}
+              name={poke.name}
+              setPokemonIndex= {setPokemonIndex}
+            />
+          ))}
     </div>
   )
 }
