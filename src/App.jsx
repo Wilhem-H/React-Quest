@@ -9,20 +9,6 @@ import NavBar from './components/NavBar'
 
 function App() {
 
-  useEffect(
-    () =>  {
-      window.alert("Hello pokemon trainer :)")
-      console.log (pokemonIndex)
-    }, 
-    []
- );
-
-  function pikachu(){
-    if (pokemonIndex === 3) {
-      window.alert('pika pikachu !!!');
-  }
- } 
-
   const pokemonList = [
     {
         name: "bulbasaur",
@@ -49,6 +35,20 @@ function App() {
       },
     ];
 
+    useEffect(
+      () =>  {
+        window.alert("Hello pokemon trainer :)")
+        console.log (pokemonIndex)
+      }, 
+      []
+   );
+  
+    function pikachu(){
+      if (pokemonIndex === 3) {
+        window.alert('pika pikachu !!!');
+    }
+   } 
+
     PokemonCard.propTypes = {
       pokemon : PropTypes.shape({
         name: PropTypes.string.isRequired,
@@ -57,19 +57,14 @@ function App() {
     } 
     
   const [pokemonIndex, setPokemonIndex] = useState (0);
+
+  const selectPokemon = (index) => { setPokemonIndex(index)}
   
   return (
     <div>
       <h1>Pokedex</h1>
       <PokemonCard pokemon = {pokemonList[pokemonIndex]} pikachu = {pikachu} />
-      {pokemonList.map((poke, index) => (
-            <NavBar
-              index = {index}
-              key={poke.name}
-              name={poke.name}
-              setPokemonIndex= {setPokemonIndex}
-            />
-          ))}
+      <NavBar onSelect={selectPokemon} pokemonList={pokemonList}/>
     </div>
   )
 }
