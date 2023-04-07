@@ -1,10 +1,10 @@
 
 
-  function NavBar(props) {
+  function NavBar({onSelect, pokemonList}) {
     
         return <>
-        {props.pokemonList.map((pokemon, index) =>(
-        <button key={index} onClick={() => props.onSelect(index)}>{pokemon.name}</button>
+        {pokemonList.map((pokemon, index) =>(
+        <button key={index} onClick={() => onSelect(index)}>{pokemon.name}</button>
         ))}
         
         </>
